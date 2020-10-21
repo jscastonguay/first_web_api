@@ -27,7 +27,7 @@ namespace TodoApi
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("*");
+                        builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
                     });
             });
             services.AddDbContext<TodoContext>(opt =>
