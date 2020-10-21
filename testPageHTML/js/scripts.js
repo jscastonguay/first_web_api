@@ -4,7 +4,11 @@ function getList() {
     console.log("Call du GET: " + JSON.stringify(data));
     $('#todoList').empty();
     for (var i = 0; i < data.length; i++) {
-      $('#todoList').append("<input type=\"checkbox\" id=\"todoElement\" name=\"todoElement\" value=\"" + data[i].id + "\" />" + data[i].name + "<br />");
+      var name = String(data[i].name);
+      if (data[i].isComplete) {
+        name = name.strike();
+      }
+      $('#todoList').append("<input type=\"checkbox\" id=\"todoElement\" name=\"todoElement\" value=\"" + data[i].id + "\" />" + name + "<br />");
     }
   });
 }
