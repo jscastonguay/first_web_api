@@ -17,23 +17,20 @@ function nouveauTodo() {
     Name: $('#name').val()
   };
   console.log("todo: " + JSON.stringify(todo));
-  $.post("https://localhost:5001/api/TodoItems",
-    todo,
-    function(data , status) {
+  $.ajax({
+      url: "https://localhost:5001/api/TodoItems/",
+      method: "POST",
+      data: JSON.stringify(todo),
+      contentType: "application/json"
+    }).then(function (data) {
       console.log('POST received data: ' + JSON.stringify(data) + ' status: ' + status);
       getList();
-    }
-  );
-}
-
-function setCheck() {
-  console.log("Appelle de setCheck");
+    });
 }
 
 function deleteTodo() {
   console.log("Appelle de deleteTodo");
   $($("input[name='todoElement']:checked")).each(function() {
-    console.log(this.value);
     $.ajax({
       url: "https://localhost:5001/api/TodoItems/" + this.value,
       method: "DELETE",
@@ -44,5 +41,25 @@ function deleteTodo() {
       getList();
     });
   });
-  
+}
+
+function setCheck() {
+  console.log("Appelle de setCheck");
+  $($("input[name='todoElement']:checked")).each(function() {
+    var todo = {
+      id: parseInt(this.value),
+      isComplete: true,
+      name: this.nextSibling.nodeValue
+    };
+    console.log("todo: " + JSON.stringify(todo));
+    $.ajax({
+      url: "https://localhost:5001/api/TodoItems/" + this.value,
+      method: "PUT",
+      data: JSON.stringify(todo),
+      contentType: "application/json"
+    }).then(function (data) {
+      console.log('PUT received data: ' + JSON.stringify(data));
+      getList();
+    });
+  });
 }
