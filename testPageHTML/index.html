@@ -11,17 +11,15 @@
 
 </head>
 <body>
-	<!--
-  <form action="https://localhost:5001/api/TodoItems" method="get">
-    <input type="submit" value="get data" />
-  </form>
-  -->
-  <button onclick="myFunction()">Click me</button>
+  <button onclick="getList()">Get List</button>
   <script src="js/scripts.js"></script>
   <p>
 	<ol id="todoList">
-		<li>Vide</li>
 	</ol>
+  </p>
+  <p>
+    <button onclick="nouveauTodo()">Nouveau</button>
+    <input type="text" id="name" />
   </p>
 </body>
 </html>
