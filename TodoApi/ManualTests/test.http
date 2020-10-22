@@ -1,0 +1,41 @@
+// Using vscode extension:
+// https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@URL = https://localhost:5001/api/TodoItems 
+
+GET  {{URL}} HTTP/1.1
+
+###
+
+@idToGet = 2
+
+GET  {{URL}}/{{idToGet}} HTTP/1.1
+
+###
+
+POST {{URL}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Ceci est la tâche no. {{$randomInt 1 100}}",
+    "isComplete": false
+}
+
+###
+
+@idToPut = 2
+
+PUT {{URL}}/{{idToPut}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": {{idToPut}},
+    "name": "Ceci est la tâche no. {{$randomInt 1 100}}",
+    "isComplete": false
+}
+
+###
+
+@idToDelete = 2
+
+DELETE  {{URL}}/{{idToDelete}} HTTP/1.1
