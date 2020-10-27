@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
+using Microsoft.Extensions.Logging;
 
 namespace TodoApi
 {
@@ -16,6 +17,7 @@ namespace TodoApi
         }
 
         public IConfiguration Configuration { get; }
+        //private readonly ILogger _logger;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
