@@ -1,7 +1,7 @@
 // Using vscode extension:
 // https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 
-@URL = https://localhost:5001/api/TodoItems 
+@URL = http://localhost:5000/api/TodoItems 
 
 GET  {{URL}} HTTP/1.1
 
