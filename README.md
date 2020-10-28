@@ -2,7 +2,23 @@
 
 ## Premier essai avec docker
 
-Voici les commandes
+### Documentation importante
+
+- https://docs.microsoft.com/fr-fr/aspnet/core/host-and-deploy/docker/building-net-docker-images?view=aspnetcore-3.1
+- https://github.com/dotnet/dotnet-docker/tree/master/samples/aspnetapp
+
+
+### Voici les commandes à utiliser avec version courante de Dockerfile
+
+```bash
+docker build -t todoapi .
+```
+
+```bash
+docker run -dp 5000:5000 todoapi
+```
+
+### Voici les commandes lorsque utiliser avec ancienne version de Dockerfile
 
 ```bash
 docker build -t todoapi .
@@ -22,7 +38,8 @@ dotnet run
 ```
 
 ## Problème avec la connexion dans le Docker
-Ça ne fonctionne pas, le http://localhost:5000 ne semble pas fonctionner sur le host (même chose pour le https://localhost:5001). Voici la solution:
+
+La connexion ne fonctionnait pas avec http://localhost:5000 et https://localhost:5001 avec le host. Solution:
 
 - https://github.community/t/docker-container-not-mapping-to-correct-port-connection-refused/15242
 
